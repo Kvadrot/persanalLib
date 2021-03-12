@@ -27,9 +27,9 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        try! doit.doNetwork(net, Info.self, completion: { (info: Info?) in
+        try! doit.doNetwork(net, Info.self, completion: { (result: Result< Info?, Error>) in
             DispatchQueue.main.async {
-                print(info)
+                print(result)
             }
             return
         })

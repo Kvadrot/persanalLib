@@ -12,7 +12,8 @@ enum NetworkError: Error {
     case emptyRequest
     case emptyUrl
     case emptyHttpMethod
-    case networkError(Error)
     case wrongUrl
     case noResponse
+    case noData
+    case networkError(Error)
 }
