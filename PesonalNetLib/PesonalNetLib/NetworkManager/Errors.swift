@@ -8,7 +8,7 @@
 import Foundation
 
 enum NetworkError: Error {
-    
+
     case emptyRequest
     case emptyUrl
     case emptyHttpMethod

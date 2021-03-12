@@ -8,23 +8,23 @@
 import Foundation
 
 class ResourceObject {
-    
+
     var urlComponents = URLComponents()
     var request: URLRequest?
     var body: Data?
     var headers =  [String : String]()
-    
+
     init(requestMethod: HttpMethod,
          requestScheme: String,
          requestHost: String,
          requestPath: String,
          requestQueryItemes: [String: String]?) {
-        
+
         self.request?.httpMethod = requestMethod.rawValue
         self.urlComponents.scheme = requestScheme
         self.urlComponents.host = requestHost
         self.urlComponents.path = requestPath
-        
+
         guard let notEmpty = requestQueryItemes else {
             self.request = URLRequest(url: urlComponents.url!)
             return
@@ -32,10 +32,9 @@ class ResourceObject {
         setQueryItems(with: notEmpty)
         self.request = URLRequest(url: urlComponents.url!)
     }
-    
-    
+
     func setQueryItems(with parameters: [String : String]) {
-        
+
         self.urlComponents.queryItems = parameters.map { URLQueryItem(name: $0.key, value: $0.value) }
     }
 //MARK: - set resource headers
